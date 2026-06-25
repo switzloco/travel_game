@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bayani Relay: Manila Airport Dash</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #0b1020;
+        overflow: hidden;
+        /* Audio-first game: no text selection / callout to keep taps clean. */
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      #game-root {
+        width: 100vw;
+        height: 100vh;
+      }
+      #game-root canvas {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-root"></div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

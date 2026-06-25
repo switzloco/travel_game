@@ -1,0 +1,33 @@
+{
+  "name": "bayani-relay-manila-airport-dash",
+  "version": "0.1.0",
+  "private": true,
+  "license": "BSD-3-Clause",
+  "description": "Bayani Relay: Manila Airport Dash — an audio-first Tagalog learning game for Reddit (Devvit Web + Phaser).",
+  "type": "module",
+  "scripts": {
+    "dev:client": "vite --config webviews/vite.config.ts",
+    "build:client": "vite build --config webviews/vite.config.ts",
+    "build:server": "esbuild src/main.ts --bundle --platform=node --target=node22 --format=cjs --outfile=dist/server/index.cjs",
+    "build": "npm run build:client && npm run build:server",
+    "type-check": "tsc -p tsconfig.json --noEmit && tsc -p webviews/tsconfig.json --noEmit",
+    "check": "npm run type-check",
+    "login": "devvit login",
+    "playtest": "devvit playtest",
+    "upload": "npm run build && devvit upload",
+    "audio": "python tools/generate_audio.py"
+  },
+  "dependencies": {
+    "@devvit/web": "0.13.5",
+    "@hono/node-server": "^2.0.6",
+    "hono": "^4.12.27"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "devvit": "0.13.5",
+    "esbuild": "^0.28.1",
+    "phaser": "^4.2.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}
