@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.devvit/
+*.log
+.DS_Store
+
+# Python tooling (local audio generation)
+tools/__pycache__/
+tools/.venv/
