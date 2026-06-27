@@ -61,14 +61,32 @@ app.post('/api/fail', async (c) => {
   return c.json(body);
 });
 
-/** Fired ONCE on a successful level clear — records the run on the leaderboard. */
+/** Fired ONCE on a successful level clear — records the run and posts an exploration milestone comment. */
 app.post('/api/score', async (c) => {
   const payload = await c.req.json<ScorePayload>();
   const { userId } = context;
   if (userId) {
     await recordScore(userId, payload.distanceCm);
   }
-  return c.json(await getCommunityState());
+
+  // Generate and submit a travel milestone comment on the parent post
+  let banterComment: string | undefined;
+  const { postId } = context;
+  if (postId) {
+    try {
+      const username = (await reddit.getCurrentUsername()) ?? 'a_traveler';
+      const community = await getCommunityState();
+      banterComment = `✈️ u/${username} successfully navigated the terminal and reached the boarding gate! Total community travel distance: ${Math.round(community.globalDistanceCm / 100)} meters. 🌴`;
+      await reddit.submitComment({ id: postId, text: banterComment, runAs: 'APP' });
+    } catch (err) {
+      console.error('Failed to submit milestone comment:', err);
+      banterComment = undefined;
+    }
+  }
+
+  const community = await getCommunityState();
+  const body: StreakResponse = { ...community, banterComment };
+  return c.json(body);
 });
 
 /** Read-only community state for the HUD's "global relay" counter. */

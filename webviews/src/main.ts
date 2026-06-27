@@ -8,7 +8,7 @@
  */
 import Phaser from 'phaser';
 
-import { AirportDash } from './scenes/AirportDash.js';
+import { AirportExplorer } from './scenes/AirportExplorer.js';
 import { BootScene } from './scenes/BootScene.js';
 import { PreloadScene } from './scenes/PreloadScene.js';
 
@@ -27,7 +27,7 @@ const config: Phaser.Types.Core.GameConfig = {
     // We manage unlock explicitly in BootScene; Phaser still respects the gesture.
     disableWebAudio: false,
   },
-  scene: [BootScene, PreloadScene, AirportDash],
+  scene: [BootScene, PreloadScene, AirportExplorer],
 };
 
 // eslint-disable-next-line no-new

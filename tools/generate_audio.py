@@ -49,6 +49,14 @@ CUES: list[tuple[str, str, str]] = [
     ("konti_lang", "Konti lang", "-20%"),
     # --- Bonus vocabulary ---
     ("ingles", "Ingles", "-20%"),
+    # --- Top-Down Airport Explorer cues ---
+    ("dito", "Dito", "-20%"),
+    ("doon", "Doon", "-20%"),
+    ("kaliwa", "Kaliwa", "-20%"),
+    ("kanan", "Kanan", "-20%"),
+    ("hinto", "Hinto", "-20%"),
+    ("tuloy", "Tuloy", "-20%"),
+    ("salamat", "Salamat", "-20%"),
 ]
 
 

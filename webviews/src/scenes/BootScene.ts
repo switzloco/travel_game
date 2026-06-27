@@ -54,10 +54,11 @@ export class BootScene extends Phaser.Scene {
       .setOrigin(0.5);
 
     this.add
-      .text(width / 2, height * 0.52, '🔊 Headphones on. This game is all ears.', {
+      .text(width / 2, height * 0.52, '🎧 Learn Tagalog by ear — just like Pimsleur!\nListen to the audio and follow directions.\n(No subtitles on purpose!)', {
         fontFamily: 'system-ui, sans-serif',
         fontSize: '22px',
-        color: '#8b93b8',
+        color: '#cfd6f6',
+        align: 'center',
       })
       .setOrigin(0.5);
 

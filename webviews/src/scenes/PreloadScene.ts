@@ -45,6 +45,16 @@ export class PreloadScene extends Phaser.Scene {
       bar.width = 412 * p;
     });
 
+    // Load top-down explorer sprites
+    this.load.image('player', 'player.png');
+    this.load.image('npc_staff', 'npc_staff.png');
+    this.load.image('npc_vendor', 'npc_vendor.png');
+    this.load.image('npc_traveler', 'npc_traveler.png');
+    this.load.image('npc_guard', 'npc_guard.png');
+    this.load.image('speech_bubble', 'speech_bubble.png');
+    this.load.image('arrow', 'arrow.png');
+    this.load.image('airport_corridor', 'airport_corridor.png');
+
     // Every cue is keyed by its filename stem (see AudioCues.ts). MP3 ships as
     // silent placeholders today; real Tagalog VO drops in with no code change.
     for (const key of ALL_CUE_KEYS) {
@@ -53,6 +63,6 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.scene.start('AirportDash');
+    this.scene.start('AirportExplorer');
   }
 }

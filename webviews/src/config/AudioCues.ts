@@ -58,6 +58,17 @@ export const KONTI_CUE: AudioCue = {
   gloss: 'just a little bit',
 };
 
+/** Directional/explorer cues. */
+export const EXPLORER_CUES = {
+  dito: { key: 'dito', text: 'Dito', gloss: 'Here' },
+  doon: { key: 'doon', text: 'Doon', gloss: 'Over there' },
+  kaliwa: { key: 'kaliwa', text: 'Kaliwa', gloss: 'Left' },
+  kanan: { key: 'kanan', text: 'Kanan', gloss: 'Right' },
+  hinto: { key: 'hinto', text: 'Hinto', gloss: 'Stop' },
+  tuloy: { key: 'tuloy', text: 'Tuloy', gloss: 'Continue' },
+  salamat: { key: 'salamat', text: 'Salamat', gloss: 'Thank you' },
+} as const satisfies Record<string, AudioCue>;
+
 /** Misc prompt / feedback cues (UI stings, not vocabulary). */
 export const FEEDBACK_CUES = {
   correct: { key: 'sfx_correct', text: '(ding)', gloss: 'success sting' },
@@ -71,6 +82,7 @@ export const ALL_CUE_KEYS: string[] = [
     ...SYLLABLE_CUES.map((c) => c.key),
     ...CHOICE_CUES.map((c) => c.key),
     KONTI_CUE.key,
+    ...Object.values(EXPLORER_CUES).map((c) => c.key),
     ...Object.values(FEEDBACK_CUES).map((c) => c.key),
   ]),
 ];
