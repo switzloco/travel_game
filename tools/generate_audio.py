@@ -56,7 +56,7 @@ async def synth_one(stem: str, text: str, rate: str) -> None:
     out_path = OUT_DIR / f"{stem}.mp3"
     communicate = edge_tts.Communicate(text, VOICE, rate=rate)
     await communicate.save(str(out_path))
-    print(f"  ✓ {out_path.relative_to(OUT_DIR.parent.parent)}  ({text!r})")
+    print(f"  [OK] {out_path.relative_to(OUT_DIR.parent.parent)}  ({text!r})")
 
 
 async def main() -> None:

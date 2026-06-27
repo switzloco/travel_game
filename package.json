@@ -1,6 +1,6 @@
 {
-  "name": "bayani-relay-manila-airport-dash",
-  "version": "0.1.0",
+  "name": "bayani-relay",
+  "version": "0.0.0",
   "private": true,
   "license": "BSD-3-Clause",
   "description": "Bayani Relay: Manila Airport Dash — an audio-first Tagalog learning game for Reddit (Devvit Web + Phaser).",

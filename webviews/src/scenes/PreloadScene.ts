@@ -17,22 +17,22 @@ export class PreloadScene extends Phaser.Scene {
     const { width, height } = this.scale;
 
     const barBg = this.add
-      .rectangle(width / 2, height / 2, 280, 18, 0x1b2138)
+      .rectangle(width / 2, height / 2, 420, 26, 0x1b2138)
       .setStrokeStyle(2, 0x3a4570);
     const bar = this.add
-      .rectangle(barBg.x - 137, height / 2, 0, 12, 0xffd166)
+      .rectangle(barBg.x - 206, height / 2, 0, 18, 0xffd166)
       .setOrigin(0, 0.5);
 
     this.add
-      .text(width / 2, height / 2 - 30, 'Loading cues…', {
+      .text(width / 2, height / 2 - 40, 'Loading cues…', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '14px',
+        fontSize: '22px',
         color: '#8b93b8',
       })
       .setOrigin(0.5);
 
     this.load.on('progress', (p: number) => {
-      bar.width = 274 * p;
+      bar.width = 412 * p;
     });
 
     // Every cue is keyed by its filename stem (see AudioCues.ts). MP3 ships as

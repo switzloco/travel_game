@@ -75,12 +75,12 @@ export class AirportDash extends Phaser.Scene {
   create(): void {
     this.cameras.main.setBackgroundColor('#101935');
 
-    this.meter = new PanicMeter(this, this.scale.width / 2 - 160, 40);
+    this.meter = new PanicMeter(this, this.scale.width / 2 - 240, 40);
 
     this.hint = this.add
       .text(this.scale.width / 2, this.scale.height * 0.78, '', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '16px',
+        fontSize: '24px',
         color: '#8b93b8',
         align: 'center',
         wordWrap: { width: this.scale.width - 60 },
@@ -229,8 +229,8 @@ export class AirportDash extends Phaser.Scene {
     this.currentWord = cue.word;
     this.setHint('Listen — hit the word you heard. (Some are traps!)');
 
-    const left = this.makeButton(this.scale.width / 2 - 110, this.scale.height / 2, 'NAIINTINDIHAN', 0x4f8cff);
-    const right = this.makeButton(this.scale.width / 2 + 110, this.scale.height / 2, 'HINDI', 0xff7a59);
+    const left = this.makeButton(this.scale.width / 2 - 150, this.scale.height / 2, 'NAIINTINDIHAN', 0x4f8cff);
+    const right = this.makeButton(this.scale.width / 2 + 150, this.scale.height / 2, 'HINDI', 0xff7a59);
 
     let answered = false;
     const decisionWindow = 1500; // ms to react before it counts as a freeze.
@@ -370,10 +370,10 @@ export class AirportDash extends Phaser.Scene {
     const btn = this.add
       .text(this.scale.width / 2, this.scale.height * 0.6, '↻ Try again', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '22px',
+        fontSize: '32px',
         color: '#ffd166',
         backgroundColor: '#1b2138',
-        padding: { x: 16, y: 10 },
+        padding: { x: 20, y: 12 },
       })
       .setOrigin(0.5)
       .setInteractive({ useHandCursor: true });
@@ -405,11 +405,11 @@ export class AirportDash extends Phaser.Scene {
 
   /** A simple labeled button = an interactive zone + rectangle + text. */
   private makeButton(x: number, y: number, label: string, color: number) {
-    const rect = this.add.rectangle(x, y, 180, 70, color).setStrokeStyle(3, 0xffffff, 0.25);
+    const rect = this.add.rectangle(x, y, 260, 80, color).setStrokeStyle(3, 0xffffff, 0.25);
     const txt = this.add
-      .text(x, y, label, { fontFamily: 'system-ui, sans-serif', fontSize: '17px', color: '#ffffff', fontStyle: 'bold' })
+      .text(x, y, label, { fontFamily: 'system-ui, sans-serif', fontSize: '24px', color: '#ffffff', fontStyle: 'bold' })
       .setOrigin(0.5);
-    const zone = this.add.zone(x, y, 180, 70).setInteractive({ useHandCursor: true });
+    const zone = this.add.zone(x, y, 260, 80).setInteractive({ useHandCursor: true });
     return {
       zone,
       destroy: () => {

@@ -7,8 +7,8 @@
  */
 import Phaser from 'phaser';
 
-const WIDTH = 320;
-const HEIGHT = 26;
+const WIDTH = 480;
+const HEIGHT = 38;
 
 export class PanicMeter extends Phaser.GameObjects.Container {
   private readonly bg: Phaser.GameObjects.Rectangle;
@@ -20,16 +20,16 @@ export class PanicMeter extends Phaser.GameObjects.Container {
     super(scene, x, y);
 
     this.bg = scene.add.rectangle(0, 0, WIDTH, HEIGHT, 0x1b2138).setOrigin(0, 0.5);
-    this.bg.setStrokeStyle(2, 0x3a4570);
+    this.bg.setStrokeStyle(3, 0x3a4570);
 
     // Fill is left-anchored so width maps directly to the panic percentage.
-    this.fill = scene.add.rectangle(0, 0, 0, HEIGHT - 6, 0x37d67a).setOrigin(0, 0.5);
-    this.fill.x = 3;
+    this.fill = scene.add.rectangle(0, 0, 0, HEIGHT - 8, 0x37d67a).setOrigin(0, 0.5);
+    this.fill.x = 4;
 
     this.label = scene.add
       .text(WIDTH / 2, 0, 'PANIC', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '13px',
+        fontSize: '18px',
         color: '#cfd6f6',
       })
       .setOrigin(0.5);
@@ -41,7 +41,7 @@ export class PanicMeter extends Phaser.GameObjects.Container {
   /** Update the rendered meter. `value` is clamped to 0..100. */
   setValue(value: number): void {
     this.value = Phaser.Math.Clamp(value, 0, 100);
-    const usableWidth = WIDTH - 6;
+    const usableWidth = WIDTH - 8;
     this.fill.width = (this.value / 100) * usableWidth;
     this.fill.fillColor = this.colorFor(this.value);
   }

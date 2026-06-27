@@ -25,38 +25,38 @@ export class BootScene extends Phaser.Scene {
     this.add
       .text(width / 2, height * 0.32, 'BAYANI RELAY', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '40px',
+        fontSize: '60px',
         color: '#ffd166',
         fontStyle: 'bold',
       })
       .setOrigin(0.5);
 
     this.add
-      .text(width / 2, height * 0.32 + 44, 'Manila Airport Dash', {
+      .text(width / 2, height * 0.32 + 66, 'Manila Airport Dash', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '20px',
+        fontSize: '28px',
         color: '#cfd6f6',
       })
       .setOrigin(0.5);
 
     this.add
-      .text(width / 2, height * 0.5, '🔊 Headphones on. This game is all ears.', {
+      .text(width / 2, height * 0.52, '🔊 Headphones on. This game is all ears.', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '15px',
+        fontSize: '22px',
         color: '#8b93b8',
       })
       .setOrigin(0.5);
 
     // The single, deliberate user gesture that legally unlocks audio.
     const button = this.add
-      .rectangle(width / 2, height * 0.68, 240, 64, 0x37d67a)
+      .rectangle(width / 2, height * 0.68, 320, 80, 0x37d67a)
       .setStrokeStyle(3, 0x2bb866)
       .setInteractive({ useHandCursor: true });
 
     const buttonLabel = this.add
       .text(width / 2, height * 0.68, 'TAP TO START', {
         fontFamily: 'system-ui, sans-serif',
-        fontSize: '22px',
+        fontSize: '28px',
         color: '#08130c',
         fontStyle: 'bold',
       })
