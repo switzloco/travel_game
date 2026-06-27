@@ -335,7 +335,7 @@ export class AirportDash extends Phaser.Scene {
     this.panic = 100;
     this.meter.setValue(100);
     this.playFeedback(FEEDBACK_CUES.panic.key);
-    this.setHint('😱 SOCIAL PANIC! You froze at immigration.');
+    this.setHint('😱 SOCIAL PANIC! You froze at the arrival gate.');
 
     const payload: FailPayload = {
       failedWord: word,

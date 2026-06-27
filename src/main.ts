@@ -93,7 +93,7 @@ app.post('/internal/menu/create-post', async (c) => {
 
   const post = await reddit.submitCustomPost({
     subredditName,
-    title: 'Bayani Relay: Manila Airport Dash — can you survive immigration? 🛂',
+    title: 'Bayani Relay: Manila Airport Dash — start your tropical getaway! 🌴✈️',
   });
 
   return c.json({

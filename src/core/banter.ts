@@ -13,7 +13,7 @@ import type { FailPayload, TargetWord } from '../../shared/types.js';
 const BANTER: Record<TargetWord, string[]> = {
   naiintindihan: [
     'u/{u} confidently shouted "Naiintindihan!" then understood absolutely nothing. Still at the gate. 🛂',
-    'u/{u} claimed to understand the immigration officer. They did not. {d}cm into the relay and stuck.',
+    'u/{u} claimed to understand the airport staff. They did not. {d}cm into the relay and stuck.',
   ],
   hindi: [
     'u/{u} froze on a simple "Hindi". The vendor took that as a yes and now they own three balikbayan boxes. 📦',
