@@ -18,7 +18,7 @@ export const NPC_ENCOUNTERS: NPCEncounter[] = [
   {
     id: 'staff_start',
     x: 450,
-    y: 580,
+    y: 840,
     spriteKey: 'npc_staff',
     cueKey: 'dito',
     englishGloss: '"Dito" (Here)',
@@ -27,7 +27,7 @@ export const NPC_ENCOUNTERS: NPCEncounter[] = [
   {
     id: 'guard_checkpoint',
     x: 900,
-    y: 520,
+    y: 790,
     spriteKey: 'npc_guard',
     cueKey: 'kanan',
     englishGloss: '"Kanan" (Right / Go right)',
@@ -36,7 +36,7 @@ export const NPC_ENCOUNTERS: NPCEncounter[] = [
   {
     id: 'vendor_shop',
     x: 1350,
-    y: 600,
+    y: 860,
     spriteKey: 'npc_vendor',
     cueKey: 'tuloy',
     englishGloss: '"Tuloy" (Continue / Come in)',
@@ -45,7 +45,7 @@ export const NPC_ENCOUNTERS: NPCEncounter[] = [
   {
     id: 'traveler_gate',
     x: 1800,
-    y: 540,
+    y: 810,
     spriteKey: 'npc_traveler',
     cueKey: 'doon',
     englishGloss: '"Doon" (Over there / That way)',

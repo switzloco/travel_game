@@ -9,7 +9,7 @@ export class AirportExplorer extends Phaser.Scene {
   // Player state
   private playerSprite!: Phaser.GameObjects.Sprite;
   private playerX = 150;
-  private playerY = 560;
+  private playerY = 820;
   private playerSpeed = 5.5;
   private movingLeft = false;
 
@@ -50,14 +50,16 @@ export class AirportExplorer extends Phaser.Scene {
     // 2. Add NPCs along the corridor
     NPC_ENCOUNTERS.forEach((npc) => {
       const npcSprite = this.add.sprite(npc.x, npc.y, npc.spriteKey)
-        .setOrigin(0.5, 0.5)
-        .setScale(0.85);
+        .setOrigin(0.5, 0.5);
+      
+      const npcScale = 110 / npcSprite.height;
+      npcSprite.setScale(npcScale);
 
       // Add a floating speech bubble above each NPC
       const bubble = this.add.sprite(npc.x, npc.y - 70, 'speech_bubble')
-        .setOrigin(0.5, 0.5)
-        .setScale(0.7)
-        .setAlpha(0.8);
+        .setOrigin(0.5, 0.5);
+      const bubbleScale = 50 / bubble.height;
+      bubble.setScale(bubbleScale).setAlpha(0.85);
 
       // Simple bobbing float animation for speech bubble
       this.tweens.add({
@@ -74,8 +76,9 @@ export class AirportExplorer extends Phaser.Scene {
 
     // 3. Add Player traveler
     this.playerSprite = this.add.sprite(this.playerX, this.playerY, 'player')
-      .setOrigin(0.5, 0.5)
-      .setScale(0.85);
+      .setOrigin(0.5, 0.5);
+    const playerScale = 110 / this.playerSprite.height;
+    this.playerSprite.setScale(playerScale);
 
     // Camera follow player smoothly
     this.cameras.main.startFollow(this.playerSprite, true, 0.1, 0.1);
@@ -83,9 +86,9 @@ export class AirportExplorer extends Phaser.Scene {
     // 4. Directional indicators (arrow pointing direction for NPC instructions)
     this.instructionArrow = this.add.sprite(width / 2, height * 0.35, 'arrow')
       .setOrigin(0.5)
-      .setScale(1.2)
-      .setAlpha(0)
       .setScrollFactor(0); // fixed on UI camera layer
+    const arrowScale = 120 / this.instructionArrow.height;
+    this.instructionArrow.setScale(arrowScale).setAlpha(0);
 
     // 5. Instruction dialogue box (bottom)
     this.interactionBox = this.add.rectangle(width / 2, height * 0.85, width - 80, 140, 0x1b2138, 0.85)
@@ -155,7 +158,7 @@ export class AirportExplorer extends Phaser.Scene {
 
       // Keep player inside walkable corridor bounds
       this.playerX = Phaser.Math.Clamp(this.playerX, 60, this.bgWidth - 60);
-      this.playerY = Phaser.Math.Clamp(this.playerY, 490, 670);
+      this.playerY = Phaser.Math.Clamp(this.playerY, 760, 960);
 
       this.playerSprite.setPosition(this.playerX, this.playerY);
 
