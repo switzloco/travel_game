@@ -17,10 +17,24 @@ export class BootScene extends Phaser.Scene {
     super('BootScene');
   }
 
+  preload(): void {
+    this.load.image('title_bg', 'title_bg.png');
+    this.load.image('game_bg', 'game_bg.png');
+    this.load.image('success_bg', 'success_bg.png');
+  }
+
   create(): void {
     const { width, height } = this.scale;
 
-    this.cameras.main.setBackgroundColor('#0b1020');
+    // Add and scale background image to cover the canvas
+    const bg = this.add.image(width / 2, height / 2, 'title_bg');
+    const scaleX = width / bg.width;
+    const scaleY = height / bg.height;
+    const scale = Math.max(scaleX, scaleY);
+    bg.setScale(scale);
+
+    // Dark glassmorphic overlay for maximum text contrast
+    this.add.rectangle(width / 2, height / 2, width, height, 0x080f1a, 0.65);
 
     this.add
       .text(width / 2, height * 0.32, 'BAYANI RELAY', {

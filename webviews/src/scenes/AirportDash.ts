@@ -73,7 +73,17 @@ export class AirportDash extends Phaser.Scene {
   }
 
   create(): void {
-    this.cameras.main.setBackgroundColor('#101935');
+    const { width, height } = this.scale;
+
+    // Add and scale gameplay background image to cover the canvas
+    const bg = this.add.image(width / 2, height / 2, 'game_bg');
+    const scaleX = width / bg.width;
+    const scaleY = height / bg.height;
+    const scale = Math.max(scaleX, scaleY);
+    bg.setScale(scale);
+
+    // Sleek dark glassmorphic overlay for high-contrast gameplay
+    this.add.rectangle(width / 2, height / 2, width, height, 0x0c1326, 0.75);
 
     this.meter = new PanicMeter(this, this.scale.width / 2 - 240, 40);
 
@@ -357,7 +367,25 @@ export class AirportDash extends Phaser.Scene {
     this.resolved = true;
     this.phase = 'over';
     this.teardownActive();
-    this.setHint('🎉 You made it through NAIA. Salamat!');
+
+    const { width, height } = this.scale;
+
+    // Add and scale success background image to cover the canvas
+    const bg = this.add.image(width / 2, height / 2, 'success_bg');
+    const scaleX = width / bg.width;
+    const scaleY = height / bg.height;
+    const scale = Math.max(scaleX, scaleY);
+    bg.setScale(scale);
+
+    // Warm tropical gradient overlay
+    this.add.rectangle(width / 2, height / 2, width, height, 0x080f1a, 0.45);
+
+    // Hide gameplay-only HUD elements
+    this.meter.setVisible(false);
+
+    // Bring hint text to front and update it
+    this.hint.depth = 10;
+    this.setHint('🎉 You made it through the arrival gate!\nEnjoy your tropical getaway! 🌴✈️');
 
     postScore({ distanceCm: Math.round(this.distanceCm), bestCombo: this.bestCombo }).catch((err) =>
       console.error('postScore failed:', err),
@@ -377,6 +405,7 @@ export class AirportDash extends Phaser.Scene {
       })
       .setOrigin(0.5)
       .setInteractive({ useHandCursor: true });
+    btn.depth = 10;
     btn.once('pointerup', () => this.scene.restart());
   }
 

@@ -39,16 +39,16 @@ OUT_DIR = Path(__file__).resolve().parent.parent / "webviews" / "assets" / "audi
 # `rate` slows the syllable build-ups so learners can hear each part.
 CUES: list[tuple[str, str, str]] = [
     # --- Mechanic 1: syllable build-up (back to front) ---
-    ("dihan", "dihan", "-25%"),
-    ("tindihan", "tindihan", "-15%"),
-    ("naiintindihan", "Naiintindihan", "+0%"),
+    ("dihan", "dihan", "-40%"),
+    ("tindihan", "tindihan", "-30%"),
+    ("naiintindihan", "Naiintindihan", "-20%"),
     # --- Mechanic 2: binary choice + distractor ---
-    ("hindi", "Hindi", "+0%"),
-    ("hati", "Hati", "+0%"),
+    ("hindi", "Hindi", "-20%"),
+    ("hati", "Hati", "-20%"),
     # --- Mechanic 3: konti lang slider ---
-    ("konti_lang", "Konti lang", "+0%"),
+    ("konti_lang", "Konti lang", "-20%"),
     # --- Bonus vocabulary ---
-    ("ingles", "Ingles", "+0%"),
+    ("ingles", "Ingles", "-20%"),
 ]
 
 

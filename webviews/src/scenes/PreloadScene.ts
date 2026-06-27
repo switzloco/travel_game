@@ -16,6 +16,16 @@ export class PreloadScene extends Phaser.Scene {
   preload(): void {
     const { width, height } = this.scale;
 
+    // Add and scale background image to cover the canvas (seamless transition from BootScene)
+    const bg = this.add.image(width / 2, height / 2, 'title_bg');
+    const scaleX = width / bg.width;
+    const scaleY = height / bg.height;
+    const scale = Math.max(scaleX, scaleY);
+    bg.setScale(scale);
+
+    // Dark glassmorphic overlay for maximum progress bar contrast
+    this.add.rectangle(width / 2, height / 2, width, height, 0x080f1a, 0.65);
+
     const barBg = this.add
       .rectangle(width / 2, height / 2, 420, 26, 0x1b2138)
       .setStrokeStyle(2, 0x3a4570);
