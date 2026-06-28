@@ -8,8 +8,8 @@ import { TouchJoystick } from '../ui/TouchJoystick.js';
 export class AirportExplorer extends Phaser.Scene {
   // Player state
   private playerSprite!: Phaser.GameObjects.Sprite;
-  private playerX = 150;
-  private playerY = 820;
+  private playerX = 360;
+  private playerY = 980;
   private playerSpeed = 5.5;
   private movingLeft = false;
 
@@ -19,7 +19,8 @@ export class AirportExplorer extends Phaser.Scene {
   private hintText!: Phaser.GameObjects.Text;
   private instructionArrow!: Phaser.GameObjects.Sprite;
   private interactionBox!: Phaser.GameObjects.Rectangle;
-  private bgWidth = 2160; // will be dynamic based on image scaling
+  private bgWidth = 720;
+  private worldHeight = 1080;
 
   // Tweens and logic states
   private bobTween: Phaser.Tweens.Tween | null = null;
@@ -40,12 +41,13 @@ export class AirportExplorer extends Phaser.Scene {
 
     // 1. Add and scale airport corridor background
     const bg = this.add.image(0, 0, 'airport_corridor').setOrigin(0, 0);
-    const bgScale = height / bg.height;
+    const bgScale = width / bg.width; // width is 720
     bg.setScale(bgScale);
-    this.bgWidth = bg.width * bgScale;
+    this.bgWidth = 720;
+    this.worldHeight = Math.max(height, bg.height * bgScale);
 
     // Limit player movement bounds
-    this.cameras.main.setBounds(0, 0, this.bgWidth, height);
+    this.cameras.main.setBounds(0, 0, 720, this.worldHeight);
 
     // 2. Add NPCs along the corridor
     NPC_ENCOUNTERS.forEach((npc) => {
@@ -156,9 +158,9 @@ export class AirportExplorer extends Phaser.Scene {
       this.playerX += dx * this.playerSpeed;
       this.playerY += dy * this.playerSpeed;
 
-      // Keep player inside walkable corridor bounds
-      this.playerX = Phaser.Math.Clamp(this.playerX, 60, this.bgWidth - 60);
-      this.playerY = Phaser.Math.Clamp(this.playerY, 760, 960);
+      // Keep player inside walkable bounds
+      this.playerX = Phaser.Math.Clamp(this.playerX, 60, 660);
+      this.playerY = Phaser.Math.Clamp(this.playerY, 100, this.worldHeight - 60);
 
       this.playerSprite.setPosition(this.playerX, this.playerY);
 
@@ -281,8 +283,8 @@ export class AirportExplorer extends Phaser.Scene {
   }
 
   private checkGoalReached(): void {
-    // Win zone is past 2000px horizontally
-    if (this.playerX >= this.bgWidth - 160 && this.isExploring) {
+    // Win zone is top of the screen (Y <= 150)
+    if (this.playerY <= 150 && this.isExploring) {
       this.isExploring = false;
       this.clearGame();
     }
@@ -333,7 +335,7 @@ export class AirportExplorer extends Phaser.Scene {
     // Submit best explore score (total corridor width)
     if (!this.scorePosted) {
       this.scorePosted = true;
-      postScore({ distanceCm: Math.round(this.bgWidth / 10), bestCombo: 4 }).catch((err) =>
+      postScore({ distanceCm: Math.round(this.worldHeight / 10), bestCombo: 4 }).catch((err) =>
         console.error('postScore failed:', err),
       );
     }
